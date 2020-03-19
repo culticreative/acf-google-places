@@ -65,8 +65,7 @@ class acf_places_field extends acf_field {
 
         $field['value'] = wp_parse_args( $field['value'], array(
             'address' => '',
-            'lat'     => '',
-            'lng'     => ''
+            'formatted_address' => '',
         ) );
 
         $atts = array(
@@ -83,7 +82,7 @@ class acf_places_field extends acf_field {
         ?>
         <div <?php echo acf_esc_attrs( $atts ); ?>>
             <div class="acf-hidden">
-                <?php acf_hidden_input( array('name' => $field['name'], 'value' => $field['value']) ); ?>
+                <?php acf_hidden_input( array('name' => $field['name'], 'value' => $field['value']['address'] ? $field['value'] : null) ); ?>
             </div>
             <div class="title" style="border:none">
                 <input
