@@ -1,20 +1,22 @@
 <?php
 
 /*
-Plugin Name: ACF Google Places Autocomplete
-Plugin URI: https://github.com/maxjf1/acf-google-places
-Description: Adds Google Places Autocomplete field
+Plugin Name: ACF Places Biz
+Plugin URI: https://github.com/culticreative/acf-places-biz
+Description: Adds Google Places Autocomplete field that returns businesses (establishments) only
 Version: 1.0.0
-Author: Maxwell Souza
-Author URI: https://github.com/maxjf1/
+Author: Culti Creative
+Author URI: https://github.com/culticreative
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
 
 if (!defined( 'ABSPATH' ))
     exit;
 
-if (!class_exists( 'ACF_Places_Autocomplete' )) :
+if (!class_exists( 'cc_acf_plugin_places_biz' )) :
 
-    class ACF_Places_Autocomplete {
+    class cc_acf_plugin_places_biz {
         var $settings;
 
         function __construct() {
@@ -30,13 +32,13 @@ if (!class_exists( 'ACF_Places_Autocomplete' )) :
         }
 
         function include_field($version = false) {
-            include_once(plugin_dir_path( __FILE__ ) . 'fields/acf-places-field.php');
-            new acf_places_field( $this->settings );
+            include_once(plugin_dir_path( __FILE__ ) . 'fields/class-cc-acf-field-places-biz.php');
+            // new acf_places_field( $this->settings );
         }
 
     }
 
-    new ACF_Places_Autocomplete();
+    new cc_acf_plugin_places_biz();
 
 endif;
 
