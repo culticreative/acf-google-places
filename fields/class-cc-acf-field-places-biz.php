@@ -94,7 +94,7 @@ class cc_acf_field_places_biz extends acf_field {
             </div>
             <div class="title" style="border:none">
                 <input
-                        data-maps-autocomplete
+                        data-maps-places_biz
                         class="search"
                         type="text"
                         placeholder="<?php _e( "Search for business...", 'cc' ); ?>"
