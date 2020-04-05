@@ -72,7 +72,7 @@ document.autocompleteField = function () {
     // search input
 
     function readyExistingFields() {
-        const searchInput = Array.from(document.querySelectorAll('input[data-maps-places_biz]'));
+        const searchInput = Array.from(document.querySelectorAll('input[data-maps-autocomplete]'));
         searchInput.forEach(inputHandling);
     };
 
