@@ -5,7 +5,8 @@ document.autocompleteField = function () {
     function inputHandling(searchInput) {
         // options
         const options = {
-            // componentRestrictions: {country: 'gb'}
+            // componentRestrictions: {country: 'us'},
+            types: ['establishment']
         };
         // Google Maps Autocomplete Method
         const autocomplete = new google.maps.places.Autocomplete(searchInput, options);
