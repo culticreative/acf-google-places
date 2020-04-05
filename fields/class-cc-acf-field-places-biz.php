@@ -1,12 +1,20 @@
 <?php
 
-class acf_places_field extends acf_field {
+// exit if accessed directly
+if( ! defined( 'ABSPATH' ) ) exit;
+
+
+// check if class already exists
+if( !class_exists('cc_acf_field_places_biz') ) :
+
+
+class cc_acf_field_places_biz extends acf_field {
     protected $settings;
 
     function __construct($settings) {
 
-        $this->name = 'autocomplete';
-        $this->label = __( "Google Places", 'acf' );
+        $this->name = 'places_biz';
+        $this->label = __( "Places Biz", 'cc' );
         $this->category = 'jquery';
         $this->defaults = array(
             'center_lat' => '',
@@ -32,8 +40,8 @@ class acf_places_field extends acf_field {
         $url = $this->settings['url'];
         $version = $this->settings['version'];
 
-        wp_register_script( 'autocomplete', "{$url}assets/js/input.js", $version );
-        wp_enqueue_script( 'autocomplete' );
+        wp_register_script( 'cc', "{$url}assets/js/input.js", $version );
+        wp_enqueue_script( 'cc' );
 
         $api = array(
             'key'       => acf_get_setting( 'google_api_key' ),
@@ -89,7 +97,7 @@ class acf_places_field extends acf_field {
                         data-maps-autocomplete
                         class="search"
                         type="text"
-                        placeholder="<?php _e( "Search for address...", 'acf' ); ?>"
+                        placeholder="<?php _e( "Search for business...", 'cc' ); ?>"
                         value="<?php echo esc_attr( $field['value']['formatted_address'] ); ?>"
                 />
             </div>
@@ -126,8 +134,8 @@ class acf_places_field extends acf_field {
 
         // center_lat
         acf_render_field_setting( $field, array(
-            'label'        => __( 'Center', 'acf' ),
-            'instructions' => __( 'Center the initial map', 'acf' ),
+            'label'        => __( 'Center', 'cc' ),
+            'instructions' => __( 'Center the initial map', 'cc' ),
             'type'         => 'text',
             'name'         => 'center_lat',
             'prepend'      => 'lat',
@@ -137,8 +145,8 @@ class acf_places_field extends acf_field {
 
         // center_lng
         acf_render_field_setting( $field, array(
-            'label'        => __( 'Center', 'acf' ),
-            'instructions' => __( 'Center the initial map', 'acf' ),
+            'label'        => __( 'Center', 'cc' ),
+            'instructions' => __( 'Center the initial map', 'cc' ),
             'type'         => 'text',
             'name'         => 'center_lng',
             'prepend'      => 'lng',
@@ -148,3 +156,12 @@ class acf_places_field extends acf_field {
 
     }
 }
+
+// initialize
+new cc_acf_field_places_biz( $this->settings );
+
+
+// class_exists check
+endif;
+
+?>
